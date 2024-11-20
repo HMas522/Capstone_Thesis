@@ -7,7 +7,7 @@
 
 -----
 
-## Copy This Repository1
+## Copy This Repository
 
 Copy this starter repository into your own GitHub account by clicking the 'Fork' button at the top of this page. 
 
