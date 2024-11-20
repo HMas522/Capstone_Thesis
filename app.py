@@ -1,35 +1,30 @@
 from pathlib import Path
 import pandas as pd
-from shiny import App, render, ui, reactive
-import shinyswatch
+from shiny import reactive
+from shiny.express import render, ui
 
-# Load the data
+# Load the data from the CSV file
 @reactive.calc
 def dat():
     infile = Path(__file__).parent / "English_Premier_League_standings.csv"
     return pd.read_csv(infile)
 
-# Create the UI
-app_ui = ui.page_fluid(
-    # Add a title
-    ui.h1("English Premier League Standings"),
+# Define the UI layout
+with ui.page_fluid(
+    ui.title("Capstone: English Premier League Standings")  # Add the title to the app
+):
+    with ui.navset_card_underline():
 
-    # Add navigation (tabs)
-    ui.navset_tab(
-        ui.nav("Data frame", render.render_data_frame(dat)),  # Data frame tab
-        ui.nav("Table", render.render_table(dat)),  # Table tab
-        ui.nav("Summary", render.render_table(dat().describe())),  # Summary tab
-    ),
-    
-)
+        # Data Frame Tab
+        with ui.nav_panel("Data frame"):
+            @render.data_frame
+            def frame():
+                # Render the dataframe (this is the first tab)
+                return dat()
 
-# Define the server logic
-def server(input, output, session):
-    pass  # No additional server logic is needed for this example
-
-# Create the Shiny app
-app = App(app_ui, server)
-
-# Run the app
-if __name__ == "__main__":
-    app.run()
+        # Table Tab
+        with ui.nav_panel("Table"):
+            @render.table
+            def table():
+                # Render the data in a table format (second tab)
+                return dat()
