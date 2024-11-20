@@ -1,6 +1,7 @@
 from pathlib import Path
 import pandas as pd
 from shiny import reactive
+import shinyswatch
 from shiny.express import render, ui
 
 # Load the data
