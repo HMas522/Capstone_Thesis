@@ -1,30 +1,39 @@
-from pathlib import Path
-import pandas as pd
-from shiny import reactive
-from shiny.express import render, ui
 
-# Load the data from the CSV file
-@reactive.calc
-def dat():
-    infile = Path(__file__).parent / "English_Premier_League_standings.csv"
-    return pd.read_csv(infile)
+from shiny.express import input, render, ui
+from shinyswatch import theme
 
-# Define the UI layout
-with ui.page_fluid(
-    ui.title("Capstone: English Premier League Standings")  # Add the title to the app
-):
-    with ui.navset_card_underline():
+ui.page_opts(title="Hmass Dashboard", fillable=True)
+# theme.minty()
+# theme.cerulean()
 
-        # Data Frame Tab
-        with ui.nav_panel("Data frame"):
-            @render.data_frame
-            def frame():
-                # Render the dataframe (this is the first tab)
-                return dat()
+with ui.sidebar(open="desktop"):
+    ui.h2("Sidebar")
+    ui.tags.hr()
+    ui.h3("Interaction")
+    ui.input_text("name_input", "Enter your name", placeholder="Your Name")
 
-        # Table Tab
-        with ui.nav_panel("Table"):
-            @render.table
-            def table():
-                # Render the data in a table format (second tab)
-                return dat()
+    ui.tags.hr()
+    ui.h3("Links")
+    ui.a("PyShiny", href="https://shiny.posit.co/py/", target="_blank")
+    ui.a("Examples", href="https://shinylive.io/py/examples/", target="_blank")
+    ui.a("Themes", href="https://posit-dev.github.io/py-shinyswatch/", target="_blank")
+    ui.a("Deploy", href="https://docs.posit.co/shinyapps.io/getting-started.html#working-with-shiny-for-python", target="_blank")
+   
+   
+with ui.layout_columns(fill=False):       
+    ui.h2("Captsone: English Premier League Standings ")
+ 
+  
+@render.text
+def welcome_output():
+    user = input.name_input();
+    welcome_string = f'Greetings {user}!';
+    return welcome_string
+
+
+@render.data_frame
+def csv_output():
+        # Read CSV reactively (you can change the path to your actual CSV file)
+        infile = Path(__file__).parent / "English_Premier_League_standings.csv"
+        df = pd.read_csv(infile)
+        return df  # Render CSV data as a DataFrame
