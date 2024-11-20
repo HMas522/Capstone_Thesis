@@ -21,7 +21,7 @@ app_ui = ui.page_fluid(
         ui.nav("Summary", render.render_table(dat().describe())),  # Summary tab
     ),
     # Apply theme here (optional)
-    ui.theme("journal")
+    shinyswatch.theme("journal")
 )
 
 # Define the server logic
