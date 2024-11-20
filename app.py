@@ -1,8 +1,7 @@
 from pathlib import Path
 import pandas as pd
-from shiny import reactive
+from shiny import App, render, ui, reactive
 import shinyswatch
-from shiny.express import render, ui
 
 # Load the data
 @reactive.calc
@@ -10,30 +9,28 @@ def dat():
     infile = Path(__file__).parent / "English_Premier_League_standings.csv"
     return pd.read_csv(infile)
 
-# UI for the app
-with ui.navset_card_underline():
+# Create the UI
+app_ui = ui.page_fluid(
+    # Add a title
+    ui.h1("English Premier League Standings"),
 
-    # Title and theme
-    ui.title("Capstone: English Premier League Standings")
-    ui.theme("journal")  # You can choose other themes like "cosmo", "darkly", "sandstone", etc.
+    # Add navigation (tabs)
+    ui.navset_tab(
+        ui.nav("Data frame", render.render_data_frame(dat)),  # Data frame tab
+        ui.nav("Table", render.render_table(dat)),  # Table tab
+        ui.nav("Summary", render.render_table(dat().describe())),  # Summary tab
+    ),
+    # Apply theme here (optional)
+    ui.theme("journal")
+)
 
-    # First Tab: Data frame
-    with ui.nav_panel("Data frame"):
-        @render.data_frame
-        def frame():
-            # Display the dataframe using dat()
-            return dat()
+# Define the server logic
+def server(input, output, session):
+    pass  # No additional server logic is needed for this example
 
-    # Second Tab: Table
-    with ui.nav_panel("Table"):
-        @render.table
-        def table():
-            # Display the raw data as a table
-            return dat()
+# Create the Shiny app
+app = App(app_ui, server)
 
-    # Third Tab: Summary
-    with ui.nav_panel("Summary"):
-        @render.table
-        def summary_table():
-            # Generate and display a summary of the dataset (e.g., basic statistics)
-            return dat().describe()
+# Run the app
+if __name__ == "__main__":
+    app.run()
