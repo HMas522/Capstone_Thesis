@@ -1,6 +1,6 @@
 # Continuous Intelligence App
 
-- Repository: [Hmass522 GitHub](https://github.com/HMas522/Capstone)
+- Repository: [Hmass522 GitHub](https://github.com/HMas522/Capstone_Thesis)
 - Overleaf Report [Hmassey Overleaf](https://www.overleaf.com/read/czmjjqvmpcjy#18f9b6)
 - Shiny Website: [Shiny Website](https://HMas522.github.io/cintel-05-live-updates/)
 - Author: [Hayley Massey](https://github.com/HMas522)
@@ -43,7 +43,7 @@ With your respository folder open in VS Code:
 
 ## Create a Local Virtual Environment
 
-Open a PowerShell terminal in this cintel-05-live-updates folder on your machine. 
+Open a PowerShell terminal in this Capstone Thesis folder on your machine. 
 Create a virtual environment named .venv in the current directory. 
 Verify that a .venv folder was created after running the command. 
 
