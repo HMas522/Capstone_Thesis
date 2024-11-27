@@ -122,7 +122,7 @@ A website with continous stocks and continous airline flights were deployed usin
 Shiny has multiple different functions that all interact with one another. 
 One cannot modify a few lines of code and have it completely alter the function. 
 
-![Complex Shiny Display](images/Shinyexp1.png)
+![Complex Shiny Display](Shinyexp1.png)
 
 Shiny has server, session, input, and outputs that all delicately work with one another.
 
@@ -142,7 +142,7 @@ If the limit is over used, then the API might start charging a month fee based o
 The Sports API basic plan limits the user to only contact the API 100 times per day.
 Seems like a lot until it is actually applied. The user trying to deploy the code contacted the API, 30 times in one day.
 
-![API tracking](images/API-Tracking.png)
+![API tracking](API-Tracking.png)
 
 The 2nd object was to use a deque for the data to be live on the Shiny app, but with the limiations of the API's basic plan, this might be no longer in scope.
 This relates to a real life problem for companies using API's for apps they may develop. Companies might or cannot afford a monthly cost of $40 a month for 150,000 requests a day.
@@ -154,16 +154,16 @@ Create a data dictionary based on the API's json stucture. This will be loaded i
 The data cannot be viewed unless a print() statement is used or a csv is written to the local destination.
 Shiny can work with csv files. The data is now captured and can be used with Shiny.
 
-![API code 1](images/fetchcode1.png)
+![API code 1](fetchcode1.png)
 
-![API code 2](images/fetchcode2.png)
+![API code 2](fetchcode2.png)
 
 # Shiny Display
 
 Shiny is unique because of how customizable it is.
 The code to display a dataframe is fairly simple but kind of boring. 
 
-![Shiny local deploy](images/local-shiny-deploy.png)
+![Shiny local deploy](local-shiny-deploy.png)
 
 Also, this is hosted on a local server. The object is to have Shinyapps.io host it on a url (https).
 
@@ -172,34 +172,34 @@ This file will automatically deploy the app.py to the Shinyapps.io, use the corr
 
 Shiny account, secrets, and token are what connect my github repo and shiny app together. 
 
-![worflow 1](images/workflow.png)
+![worflow 1](workflow.png)
 
-![workflow 2](images/workflowgit.png)
+![workflow 2](workflowgit.png)
 
-![worflow 3](images/workflow2.png)
+![worflow 3](workflow2.png)
 
 # Shiny Deployed Website
 
 After following the requirements listed at the beginning of this README and activating the virtual environment.
 The Shiny app was deployed with shiny run app.py
 
-![Shiny app just dataframe](images/simple-code.png)
+![Shiny app just dataframe](simple-code.png)
 
-![Shiny website deploy](images/Shiny-website-deployed.png.png)
+![Shiny website deploy](Shiny-website-deployed.png.png)
 
 A separate repository was created to design a simple template that is more inviting to the audience. 
 
 Repository Sandbox: [Hmass522 GitHub](https://github.com/HMas522/Capstone_sandbox)
 
-![Basic Shiny Template](images/basic-temp.png)
+![Basic Shiny Template](basic-temp.png)
 
 The code was mixed together so the basic template and Soccer Standings will be displayed
 
-![Mixed Code](images/mixedappcode.png)
+![Mixed Code](mixedappcode.png)
 
 # Objective 1 complete!
 
-![Draft 1 Website](images/draft1app.png)
+![Draft 1 Website](draft1app.png)
 
 # Archive and Delete the Shinyapp.io
 
